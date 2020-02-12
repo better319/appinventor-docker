@@ -1,5 +1,13 @@
 version: '3'
+volumes:
+  rendezvous:
 services:
+  rendezvous:
+    build: rendezvous
+    ports:
+      - "80:3000"
+    volumes:
+      - rendezvous:/data
   appinventorserver:
     build: .
     ports:

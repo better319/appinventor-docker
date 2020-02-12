@@ -12,22 +12,27 @@ RUN apt-get install -y libc6:i386 libstdc++6:i386 glibc-doc:i386 gcc-5-base:i386
 RUN apt-get install -y wget git
 RUN mkdir -p /opt/appengine
 RUN cd /opt/appengine
-RUN wget --no-verbose -O /tmp/appengine.zip https://storage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-1.9.68.zip
+RUN wget --no-verbose -O /tmp/appengine.zip https://storage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-1.9.78.zip
 RUN cd opt/appengine && unzip -o /tmp/appengine.zip
 
 # Configure shell
-ENV PATH="/opt/appengine/appengine-java-sdk-1.9.68/bin:${PATH}"
+ENV PATH="/opt/appengine/appengine-java-sdk-1.9.78/bin:${PATH}"
 
 # Configure java
 RUN update-java-alternatives -s java-1.8.0-openjdk-amd64
 
 # Download source
 RUN git clone --recursive https://github.com/mit-cml/appinventor-sources.git /opt/src
+RUN cd /opt/src && git checkout v182a
 
 # Build it
 WORKDIR /opt/src/appinventor
+# Copy custom configuration
+COPY config/appengine-web.xml appengine/war/WEB-INF/appengine-web.xml
+
 RUN ant clean && ant MakeAuthKey
 RUN ant
+
 
 # Run it
 COPY startserver.sh .
