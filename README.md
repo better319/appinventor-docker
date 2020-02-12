@@ -10,8 +10,8 @@ It is based on the Vagrant build process of the official [appinventor-sources](h
 For quick and easy setup, the files are included in this repository.
 They are just a copy of `appinventor/misc/rendezvous`.
 
-You have to update the value of the `use.rendezvousserver` to the IP on which
-your appinventor is running in your LAN.
+You have to update the value of the `use.rendezvousserver` in `config/appengine-web.xml`
+to the IP on which your appinventor is running in your LAN.
 
 ## Building / Running
 
