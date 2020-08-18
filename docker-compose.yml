@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 volumes:
   rendezvous:
 services:
@@ -9,8 +9,11 @@ services:
     volumes:
       - rendezvous:/data
   appinventorserver:
-    build: .
+    build:
+      context: .
+      args:
+        VERSION: v184
     ports:
-     - "8888:8888"
+      - "8888:8888"
     stdin_open: true
     tty: true
