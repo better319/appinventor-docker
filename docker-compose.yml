@@ -12,7 +12,7 @@ services:
     build:
       context: .
       args:
-        VERSION: v184
+        VERSION: v185a
     ports:
       - "8888:8888"
     stdin_open: true

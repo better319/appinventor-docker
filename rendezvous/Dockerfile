@@ -1,5 +1,5 @@
 FROM ubuntu:16.04
-MAINTAINER Jeffrey I. Schiller <jis@mit.edu>
+LABEL maintainer Jeffrey I. Schiller <jis@mit.edu>
 RUN apt-get update && \
     apt-get install -y memcached nano-tiny nodejs nodejs-legacy npm sqlite3 supervisor
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

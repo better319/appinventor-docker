@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-echo "Trying to launchh app inventor server!"
+echo "Launching app inventor server!"
 cd /opt/src/appinventor
 ant RunLocalBuildServer &> buildserver.log &
 BUILDSERVER=$!

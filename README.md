@@ -16,7 +16,7 @@ You have to update the value of the `use.rendezvousserver` in `config/appengine-
 You can adjust the version you want to build in the docker-compose-file:
 Set `appinventorserver.build.args.VERSION` to something which `git checkout` understands.
 
-- Run `docker-compose up` (it will take 5-10 minutes for the first build)
+- Run `docker-compose up` (it will take ~15 minutes for the first build)
 - Access it with <http://localhost:8888>
 - Login "with Google" and `test@example.com`
 

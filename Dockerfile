@@ -3,8 +3,7 @@ FROM ubuntu:18.04
 RUN dpkg --add-architecture i386
 
 # Install dependencies
-RUN apt-get update
-RUN apt-get upgrade -y
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libc6:i386 libstdc++6:i386 glibc-doc:i386 gcc-5-base:i386 gcc-6-base:i386 libgcc1:i386 \
      openjdk-8-jdk zip unzip ant lib32z1 adb phantomjs wget git
 
@@ -32,7 +31,7 @@ WORKDIR /opt/src/appinventor
 # Copy custom configuration
 COPY config/appengine-web.xml appengine/war/WEB-INF/appengine-web.xml
 
-# Hacky
+# Hacky (still necessary?)
 RUN sed -i -e 's/rendezvous.appinventor.mit.edu/192.168.0.100/g' blocklyeditor/src/replmgr.js
 
 RUN ant clean && ant MakeAuthKey
