@@ -24,3 +24,10 @@ Set `appinventorserver.build.args.VERSION` to something which `git checkout` und
 
 - Persistence
 - Auto-configuration of rendenzvouz IP
+
+## Connection Debugging
+
+### Rendezvous
+
+- `docker-compose exec rendezvous sh`
+- `tail supervisor/rendezvous-stdout-*.log`

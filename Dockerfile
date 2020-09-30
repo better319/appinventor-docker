@@ -31,8 +31,8 @@ WORKDIR /opt/src/appinventor
 # Copy custom configuration
 COPY config/appengine-web.xml appengine/war/WEB-INF/appengine-web.xml
 
-# Hacky (still necessary?)
-RUN sed -i -e 's/rendezvous.appinventor.mit.edu/192.168.0.100/g' blocklyeditor/src/replmgr.js
+# Change legacy rendezvous connection back to http
+RUN sed -i -e "s/'https:\/\/'/'http:\/\/'/g" blocklyeditor/src/replmgr.js
 
 RUN ant clean && ant MakeAuthKey
 RUN ant
